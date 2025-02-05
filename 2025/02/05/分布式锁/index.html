@@ -257,7 +257,7 @@
           <h1 id="分布式锁误删问题"><a href="#分布式锁误删问题" class="headerlink" title="分布式锁误删问题"></a>分布式锁误删问题</h1>
           <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2>
           <p>线程1获取分布式锁之后，可能遇到业务阻塞，导致锁超时释放了但是业务仍旧没有完成；此时另外的线程2获取锁，导致两个业务同时进行，并可能出现锁误删的情况</p>
-          <p><img src="/assets/image-1738738263166.png"></p>
+          <p><img src="assets/image-1738738263166.png"></p>
           <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2>
           <p>获取锁时，添加特殊的id表示（UUID+threadId），在获取锁时进行比较，如果不是自己的锁，则不删除，反之则删除</p>
           <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2>
@@ -277,7 +277,7 @@
           <h1 id="分布式锁的原子性问题"><a href="#分布式锁的原子性问题" class="headerlink" title="分布式锁的原子性问题"></a>分布式锁的原子性问题</h1>
           <h2 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h2>
           <p>释放互斥锁也可能存在线程阻塞情况，因为其业务逻辑中的拿锁、比锁、删锁，都是独立的，不能确保原子性</p>
-          <p><img src="/assets/image-1738738267644.png"></p>
+          <p><img src="assets/image-1738738267644.png"></p>
           <h2 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h2>
           <p>使用Lua脚本确保原子性</p>
           <h2 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h2>
